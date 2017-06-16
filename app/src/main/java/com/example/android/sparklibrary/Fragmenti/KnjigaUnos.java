@@ -113,21 +113,25 @@ public class KnjigaUnos extends Fragment {
                 if(AppHelper.getInstance().getKnjigeStorage().getListaKnjiga().size()>0){
                     knjigeStorage = AppHelper.getInstance().getKnjigeStorage();
                     knjigeList = knjigeStorage.getListaKnjiga();
+                    knjigaUnos.setID(AppHelper.getInstance().getKnjigeStorage().getListaKnjiga().size()+1);
                     knjigeList.add(knjigaUnos);
                     knjigeStorage.setListaKnjiga(knjigeList);
                     AppHelper.getInstance().setKnjigeStorage(knjigeStorage);
                     Log.d(TAG, "unesiKnjigu: ");
                 }else{
+                    knjigaUnos.setID(1);
                     knjigeList.add(knjigaUnos);
                     knjigeStorage.setListaKnjiga(knjigeList);
                     AppHelper.getInstance().setKnjigeStorage(knjigeStorage);
                 }
             }else{
+                knjigaUnos.setID(1);
                 knjigeList.add(knjigaUnos);
                 knjigeStorage.setListaKnjiga(knjigeList);
                 AppHelper.getInstance().setKnjigeStorage(knjigeStorage);
             }
         }else {
+            knjigaUnos.setID(1);
             knjigeList.add(knjigaUnos);
             knjigeStorage.setListaKnjiga(knjigeList);
             AppHelper.getInstance().setKnjigeStorage(knjigeStorage);

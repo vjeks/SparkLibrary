@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.example.android.sparklibrary.Fragmenti.ClanoviFragment;
 import com.example.android.sparklibrary.Fragmenti.KnjigaUnos;
 import com.example.android.sparklibrary.Fragmenti.KnjigeFragment;
+import com.example.android.sparklibrary.Fragmenti.PosudjeneKnjigeFragment;
 import com.example.android.sparklibrary.Storage.AppHelper;
 
 public class MainActivity extends AppCompatActivity
@@ -116,6 +117,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_members) {
             fm.beginTransaction().replace(R.id.content_view,new ClanoviFragment()).commit();
         } else if (id == R.id.nav_manage) {
+            fm.beginTransaction().replace(R.id.content_view,new PosudjeneKnjigeFragment()).commit();
 
         } else if (id == R.id.nav_settings) {
 

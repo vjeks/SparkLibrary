@@ -6,10 +6,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.android.sparklibrary.Klase.Clanovi;
 import com.example.android.sparklibrary.R;
+import com.example.android.sparklibrary.Storage.AppHelper;
 import com.google.gson.Gson;
 
 import java.util.List;
@@ -25,7 +28,7 @@ public class ClanoviAdapter extends BaseAdapter {
 
     private Context c;
     private LayoutInflater layoutInflater;
-    private List<Clanovi>listClanovi;
+    private List<Clanovi> listClanovi;
 
     public ClanoviAdapter(Context context, List<Clanovi> uwpList) {
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -58,6 +61,8 @@ public class ClanoviAdapter extends BaseAdapter {
 //        TextView last_name;
         TextView ime;
         TextView broj;
+        ImageView cb;
+//        CheckBox cb;
     }
 
 
@@ -71,6 +76,8 @@ public class ClanoviAdapter extends BaseAdapter {
             convertView = layoutInflater.inflate(R.layout.clanovi_list_item, parent, false);
             dl.ime = (TextView) convertView.findViewById(R.id.ime_clana);
             dl.broj = (TextView) convertView.findViewById(R.id.broj_clana);
+//            dl.cb = (CheckBox) convertView.findViewById(R.id.posudjena_knjiga_slika);
+            dl.cb = (ImageView) convertView.findViewById(R.id.posudjena_knjiga_slika);
             convertView.setTag(dl);
         } else {
             dl = (drzacListe) convertView.getTag();
@@ -78,6 +85,20 @@ public class ClanoviAdapter extends BaseAdapter {
         Log.d(TAG, "getView:  CLAN:    " + new Gson().toJson(listClanovi.get(pozicija)));
         dl.ime.setText(listClanovi.get(pozicija).getIme() + " " + listClanovi.get(pozicija).getPrezime());
         dl.broj.setText("CL.br. : " + listClanovi.get(pozicija).getClan_broj());
+        if (AppHelper.getInstance().getPosudjeneKnjigeStorage() != null) {
+            if (AppHelper.getInstance().getPosudjeneKnjigeStorage().getPosudjeneKnjigeStorageList() != null) {
+                if (AppHelper.getInstance().getPosudjeneKnjigeStorage().getPosudjeneKnjigeStorageList().size() > 0) {
+                    for (int i = 0; i < AppHelper.getInstance().getPosudjeneKnjigeStorage().getPosudjeneKnjigeStorageList().size(); i++) {
+                        if(AppHelper.getInstance().getPosudjeneKnjigeStorage().getPosudjeneKnjigeStorageList().get(i).getClan_id() ==
+                                listClanovi.get(pozicija).getID()){
+//                                dl.cb.setImageResource(true);
+                                dl.cb.setImageResource(R.color.green);
+                        }
+                    }
+                }
+            }
+        }
+
         return convertView;
     }
 }

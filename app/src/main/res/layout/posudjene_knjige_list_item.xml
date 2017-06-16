@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="5dp">
+
+    <TextView
+        android:id="@+id/naziv_posudjene_knjige"
+        android:layout_width="136dp"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:text="Naziv knjige"
+        android:textSize="18dp" />
+
+    <TextView
+        android:id="@+id/autor"
+        android:layout_width="136dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/naziv_posudjene_knjige"
+        android:text="Autor"
+        android:textSize="18dp" />
+
+
+    <TextView
+        android:id="@+id/datum_posudjene_knjige"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/autor"
+        android:text="DATUM" />
+
+</RelativeLayout>

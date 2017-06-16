@@ -17,12 +17,12 @@
     </ListView>
     
     
-    <TextView
-        android:id="@+id/no_members"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="NO MEMBERS IN STORAGE"
-        android:visibility="gone"
-        android:textSize="44dp"/>
+    <!--<TextView-->
+        <!--android:id="@+id/no_members"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:text="NO MEMBERS IN STORAGE"-->
+        <!--android:visibility="gone"-->
+        <!--android:textSize="44dp"/>-->
 
 </LinearLayout>

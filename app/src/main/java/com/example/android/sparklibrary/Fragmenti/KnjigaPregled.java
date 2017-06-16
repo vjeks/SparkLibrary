@@ -15,11 +15,17 @@ import android.widget.Toast;
 
 import com.example.android.sparklibrary.Klase.Clanovi;
 import com.example.android.sparklibrary.Klase.Knjiga;
+import com.example.android.sparklibrary.Klase.PosudjeneKnjige;
 import com.example.android.sparklibrary.R;
+import com.example.android.sparklibrary.Storage.AppHelper;
+import com.example.android.sparklibrary.Storage.KnjigeStorage;
+import com.example.android.sparklibrary.Storage.PosudjeneKnjigeStorage;
 import com.example.android.sparklibrary.Storage.Storage;
 import com.google.gson.Gson;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -30,7 +36,7 @@ import java.util.List;
 public class KnjigaPregled extends Fragment {
 
 
-    public static String TAG = "KnjigaPregled";
+    public static final String TAG = "KnjigaPregled";
 
     View rootView;
     //inicijalizacija podataka
@@ -72,6 +78,8 @@ listaClanova = new ArrayList<>();
         knjiga = new Knjiga();
         knjiga = (Knjiga)getArguments().getSerializable("knjiga");
 
+        Log.d(TAG, "onCreateView: " + "KNJIGA JSON *******   "+new Gson().toJson(knjiga));
+
 
         setValuesOnForm(knjiga);
 
@@ -91,10 +99,10 @@ listaClanova = new ArrayList<>();
             public void onClick(View v) {
                 if(clan_broj_identifikacije!= null && !clan_broj_identifikacije.getText().toString().isEmpty()){
 
-                    for (int i = 0; i < listaClanova.size(); i++) {
-                        if(listaClanova.get(i).getClan_broj().equals(clan_broj_identifikacije.getText().toString())){
+                    for (int i = 0; i < AppHelper.getInstance().getClanoviStorage().getListaCLanova().size(); i++) {
+                        if(AppHelper.getInstance().getClanoviStorage().getListaCLanova().get(i).getID()==Integer.parseInt(clan_broj_identifikacije.getText().toString())){
                             clanZaProvjeru = new Clanovi();
-                            clanZaProvjeru = listaClanova.get(i);
+                            clanZaProvjeru = AppHelper.getInstance().getClanoviStorage().getListaCLanova().get(i);
                             imaclan = true;
                             break;
                         }
@@ -149,10 +157,87 @@ boolean imaclan= false;
         });
 
 
+        Calendar c = Calendar.getInstance();
+        System.out.println("Current time => "+c.getTime());
+
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        final String formattedDate = df.format(c.getTime());
+
+
+        Log.d(TAG, "Prije klika na da ili ne");
+        Log.d(TAG, "Knjiga info: " + new Gson().toJson(knjiga));
+        String zauzetaKnjiga = new Gson().toJson(knjiga);
+
+
+        Knjiga knjiga1 = new Gson().fromJson(zauzetaKnjiga,Knjiga.class);
+        Log.d(TAG, "Knjiga1 info: " + new Gson().toJson(knjiga1));
+
         da.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getActivity(), "Knjiga je uspjesno posudjena: " + clanZaProvjeru.getIme() + " " + clanZaProvjeru.getPrezime(), Toast.LENGTH_SHORT).show();
+                //TODO dodati clana u storage i zapamtiti;
+
+                PosudjeneKnjige posudjenaKnjigaUnos = new PosudjeneKnjige();
+                List<PosudjeneKnjige> posudjeneKnjigeList= new ArrayList<>();
+                PosudjeneKnjigeStorage posudjeneKnjigeStorage= new PosudjeneKnjigeStorage();
+
+                if(AppHelper.getInstance().getPosudjeneKnjigeStorage() != null){
+                    if(AppHelper.getInstance().getPosudjeneKnjigeStorage().getPosudjeneKnjigeStorageList()!=null){
+                        if (AppHelper.getInstance().getPosudjeneKnjigeStorage().getPosudjeneKnjigeStorageList().size()>0){
+                            posudjeneKnjigeStorage = AppHelper.getInstance().getPosudjeneKnjigeStorage();
+                            posudjeneKnjigeList = posudjeneKnjigeStorage.getPosudjeneKnjigeStorageList();
+
+                            posudjenaKnjigaUnos.setKnjiga_id(knjiga.getID());
+                            posudjenaKnjigaUnos.setClan_id(clanZaProvjeru.getID());
+                            posudjenaKnjigaUnos.setDatum(formattedDate);
+
+
+                            posudjeneKnjigeList.add(posudjenaKnjigaUnos);
+
+                            posudjeneKnjigeStorage.setPosudjeneKnjigeStorageList(posudjeneKnjigeList);
+                            AppHelper.getInstance().setPosudjeneKnjigeStorage(posudjeneKnjigeStorage);
+                            Log.d(TAG, "unesiKnjigu: ");
+                        }else{
+                            posudjenaKnjigaUnos.setKnjiga_id(knjiga.getID());
+                            posudjenaKnjigaUnos.setClan_id(clanZaProvjeru.getID());
+                            posudjenaKnjigaUnos.setDatum(formattedDate);
+                            posudjeneKnjigeList.add(posudjenaKnjigaUnos);
+                            posudjeneKnjigeStorage.setPosudjeneKnjigeStorageList(posudjeneKnjigeList);
+                            AppHelper.getInstance().setPosudjeneKnjigeStorage(posudjeneKnjigeStorage);
+                        }
+                    }else{
+                        posudjenaKnjigaUnos.setKnjiga_id(knjiga.getID());
+                        posudjenaKnjigaUnos.setClan_id(clanZaProvjeru.getID());
+                        posudjenaKnjigaUnos.setDatum(formattedDate);
+                        posudjeneKnjigeList.add(posudjenaKnjigaUnos);
+                        posudjeneKnjigeStorage.setPosudjeneKnjigeStorageList(posudjeneKnjigeList);
+                        AppHelper.getInstance().setPosudjeneKnjigeStorage(posudjeneKnjigeStorage);
+                    }
+
+                }else {
+                    posudjenaKnjigaUnos.setKnjiga_id(knjiga.getID());
+                    posudjenaKnjigaUnos.setClan_id(clanZaProvjeru.getID());
+                    posudjenaKnjigaUnos.setDatum(formattedDate);
+                    posudjeneKnjigeList.add(posudjenaKnjigaUnos);
+                    posudjeneKnjigeStorage.setPosudjeneKnjigeStorageList(posudjeneKnjigeList);
+                    AppHelper.getInstance().setPosudjeneKnjigeStorage(posudjeneKnjigeStorage);
+                }
+
+                List<Knjiga> knjige = new ArrayList<Knjiga>();
+                KnjigeStorage knjigeStorage = new KnjigeStorage();
+                knjige = AppHelper.getInstance().getKnjigeStorage().getListaKnjiga();
+
+                for (int i = 0; i < knjige.size(); i++) {
+                    if(knjige.get(i).getID() == knjiga.getID()){
+                        knjige.get(i).setDostupnost(false);
+                    }
+
+                }
+                knjigeStorage.setListaKnjiga(knjige);
+                AppHelper.getInstance().setKnjigeStorage(knjigeStorage);
+
+
                 alertDialog.dismiss();
                 Date date = new Date();
                 String TAG = "noviFragment"+date.getTime();

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:id="@+id/gornji_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/clan_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="id"
+            android:textSize="20dp"
+            android:padding="5dp" />
+
+        <TextView
+            android:id="@+id/clan_ime_prezime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ime Prezime"
+            android:textSize="20dp"
+            android:padding="5dp" />
+
+        <TextView
+            android:id="@+id/clan_adresa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Adressa"
+            android:textSize="20dp"
+            android:padding="5dp" />
+
+        <TextView
+            android:id="@+id/clan_tel_broj"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Broj telefona"
+            android:textSize="20dp"
+            android:padding="5dp" />
+
+        <TextView
+            android:id="@+id/clan_clanski_broj"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Clanski broj"
+            android:textSize="20dp"
+            android:padding="5dp" />
+    </LinearLayout>
+    
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@color/black"/>
+    <ListView
+        android:id="@+id/clan_posudjene_knjige_lv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+    </ListView>
+    <TextView
+        android:id="@+id/no_books"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Clan nema knjiga"
+        android:textSize="25dp"
+        android:visibility="gone"
+        />
+
+
+</LinearLayout>

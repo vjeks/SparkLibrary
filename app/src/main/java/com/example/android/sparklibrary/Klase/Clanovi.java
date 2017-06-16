@@ -7,6 +7,7 @@ import java.io.Serializable;
  */
 
 public class Clanovi implements Serializable {
+
     private int ID;
     public String ime;
     public String prezime;
