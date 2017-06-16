@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/text_na_dialogu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Posudjivanje knjige"
+        android:textSize="20dp"
+        android:gravity="center_horizontal"
+
+        />
+
+    <LinearLayout
+        android:id="@+id/donji"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        
+        <Button
+            android:id="@+id/ne"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="NE"/>
+
+        <Button
+            android:id="@+id/da"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="DA"/>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
