@@ -78,7 +78,7 @@ public class KnjigeListAdapter extends BaseAdapter {
         }
 
         dl.knjigaNaziv.setText("Naziv Knjige : "+listUwp.get(pozicija).getNaziv_knjige());
-        dl.knjigaAutor.setText("AUTOR: " + listUwp.get(pozicija).getAutor().getIme() + " "+ listUwp.get(pozicija).getAutor().getPrezime()  );
+        dl.knjigaAutor.setText("AUTOR: " + listUwp.get(pozicija).getAutor());
 
         //Picasso.with(c).load()
         if(listUwp.get(pozicija).isDostupnost()){

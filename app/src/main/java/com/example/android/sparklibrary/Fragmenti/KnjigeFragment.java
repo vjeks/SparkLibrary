@@ -2,6 +2,7 @@ package com.example.android.sparklibrary.Fragmenti;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,7 +17,8 @@ import android.widget.Toast;
 import com.example.android.sparklibrary.Adapteri.KnjigeListAdapter;
 import com.example.android.sparklibrary.Klase.Knjiga;
 import com.example.android.sparklibrary.R;
-import com.example.android.sparklibrary.Storage;
+import com.example.android.sparklibrary.Storage.AppHelper;
+import com.example.android.sparklibrary.Storage.Storage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,20 +38,20 @@ public class KnjigeFragment extends Fragment {
     Spinner klasifikacije_spinner;
 
     List<Knjiga> spinnerKnjigeFilter;
+    FloatingActionButton fab;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         //return super.onCreateView(inflater, container, savedInstanceState);
         rootView = inflater.inflate(R.layout.knjiga_fragment_layout, container, false);
-        SetKnjige();
+
 
         knjigeList = (ListView) rootView.findViewById(R.id.knjigeList);
         spinnerKnjigeFilter = new ArrayList<>();
         klasifikacije_spinner = (Spinner) rootView.findViewById(R.id.klasifikacije_spinner);
 
-        knjigeListAdapter = new KnjigeListAdapter(getActivity(), knjigaListe);
-        knjigeList.setAdapter(knjigeListAdapter);
+
 
         //TODO treba instancirati spinner
 
@@ -63,7 +65,7 @@ public class KnjigeFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(getActivity(), "pozicija je"+ position, Toast.LENGTH_SHORT).show();
-                presentKnjige(position+1);
+                //presentKnjige(position+1);
             }
 
             @Override
@@ -74,7 +76,21 @@ public class KnjigeFragment extends Fragment {
 
         knjigeList.setOnItemClickListener( new onListItemClicked());
 
+        SetKnjige();
 
+
+        fab = (FloatingActionButton) getActivity().findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+
+
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_view,new KnjigaUnos()).addToBackStack(new KnjigeFragment().getClass().getName()).commit();
+
+            }
+        });
         return rootView;
     }
 
@@ -116,7 +132,18 @@ public class KnjigeFragment extends Fragment {
 
     public void SetKnjige() {
         knjigaListe = new ArrayList<>();
-        knjigaListe = Storage.GetAllKnjige();
+
+        if(AppHelper.getInstance().getKnjigeStorage()!= null){
+            if(AppHelper.getInstance().getKnjigeStorage().getListaKnjiga()!= null){
+                if (AppHelper.getInstance().getKnjigeStorage().getListaKnjiga().size()>0) {
+                    knjigaListe = AppHelper.getInstance().getKnjigeStorage().getListaKnjiga();
+                    knjigeListAdapter = new KnjigeListAdapter(getActivity(), knjigaListe);
+                    knjigeList.setAdapter(knjigeListAdapter);
+                }
+            }
+        }
+
+//        knjigaListe = Storage.GetAllKnjige();
 //
 //        Knjiga knjiga1 = new Knjiga(1,"Druzba pere kvrzice", "treb cpic","bajke1");
 //        Knjiga knjiga2 = new Knjiga(2,"HCIe", "uyert cpic","bajk2e");

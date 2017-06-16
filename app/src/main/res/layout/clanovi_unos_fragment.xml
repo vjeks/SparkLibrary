@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/dodavanje_clanova_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Dodavanje Clanova"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"/>
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_below="@+id/dodavanje_clanova_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/gornji_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/clan_ime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Ime"
+                android:textSize="20dp"
+                android:padding="5dp" />
+
+            <EditText
+                android:id="@+id/clan_prezime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Prezime"
+                android:textSize="20dp"
+                android:padding="5dp" />
+
+            <EditText
+                android:id="@+id/clan_broj"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="ClanBroj"
+                android:inputType="number"
+                android:textSize="20dp"
+                android:padding="5dp" />
+
+            <EditText
+                android:id="@+id/clan_adresa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Adressa"
+                android:textSize="20dp"
+                android:padding="5dp" />
+
+            <EditText
+                android:id="@+id/clan_tel_broj"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="clan_telefon"
+                android:textSize="20dp"
+                android:padding="5dp" />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+    <LinearLayout
+        android:layout_below="@+id/scroll_view"
+        android:padding="10dp"
+        android:id="@+id/drugi_dole"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/nazad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Izlaz"
+            android:textSize="20dp"
+            android:layout_weight="3"
+            android:padding="5dp"/>
+        <Button
+            android:layout_weight="3"
+            android:id="@+id/spremi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Dodaj"
+            android:textSize="20dp"
+            android:padding="5dp" />
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

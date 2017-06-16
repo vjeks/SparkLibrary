@@ -16,7 +16,8 @@ import android.widget.Toast;
 import com.example.android.sparklibrary.Klase.Clanovi;
 import com.example.android.sparklibrary.Klase.Knjiga;
 import com.example.android.sparklibrary.R;
-import com.example.android.sparklibrary.Storage;
+import com.example.android.sparklibrary.Storage.Storage;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -28,6 +29,8 @@ import java.util.List;
 
 public class KnjigaPregled extends Fragment {
 
+
+    public static String TAG = "KnjigaPregled";
 
     View rootView;
     //inicijalizacija podataka
@@ -161,15 +164,29 @@ boolean imaclan= false;
     }
 
     private void setValuesOnForm(Knjiga knjiga) {
-
-
         naslov_knjige_id.setText("Naziv: " + knjiga.getNaziv_knjige());
-        autor_id_imeprezime.setText("Autor: " + knjiga.getAutor().getIme() + " " + knjiga.getAutor().getPrezime()); //= (TextView) rootView.findViewById(R.id.autor_id_imeprezime);
+        autor_id_imeprezime.setText("Autor: " + knjiga.getAutor()); //= (TextView) rootView.findViewById(R.id.autor_id_imeprezime);
         naklada_id.setText("Naklada: " + knjiga.getNaklada()); //= (TextView) rootView.findViewById(R.id.naklada_id);
         godina_izdanja_id.setText("god. izd.: " + String.valueOf(knjiga.getGodina_izdanja())); //= (TextView) rootView.findViewById(R.id.godina_izdanja_id);
-        broj_stranica_id.setText("Broj stranica: " + String.valueOf(knjiga.getBroj_stranica())); //= (TextView) rootView.findViewById(R.id.broj_stranica_id);
-        klasifikacijski_broj_id.setText("Tip: " + knjiga.getKlas_broj()); //= (TextView) rootView.findViewById(R.id.klasifikacijski_broj_id);
+        broj_stranica_id.setText("Broj stranica: " + String.valueOf(knjiga.getBroj_stranica()));
+
+        //= (TextView) rootView.findViewById(R.id.broj_stranica_id);
+        for (int i = 0; i < Storage.listTipovi().size(); i++) {
+
+            Log.d(TAG, "setValuesOnForm: "+ " ID: " + Storage.listTipovi().get(i).getTip_id());
+            Log.d(TAG, "setValuesOnForm: "+ " Naziv: " + Storage.listTipovi().get(i).getTip_naziv());
+            Log.d(TAG,"KNJIGA TIP: "+knjiga.getTip());
+            if(knjiga.getTip() == Storage.listTipovi().get(i).getTip_id()){
+
+                Log.d(TAG, "setValuesOnForm: "+ new Gson().toJson(Storage.listTipovi().get(i)));
+                klasifikacijski_broj_id.setText("Tip: " + Storage.listTipovi().get(i).getTip_naziv());
+            }else{
+                Log.d(TAG, "setValuesOnForm: " + " nije pronadjenTip");
+            }
+        }
 
 
+
+         //= (TextView) rootView.findViewById(R.id.klasifikacijski_broj_id);
     }
 }

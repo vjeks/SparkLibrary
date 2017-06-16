@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.android.sparklibrary.Storage.Storage;
+
 public class LoginActivity extends AppCompatActivity {
 
     private EditText etUsername;
@@ -27,7 +29,7 @@ public class LoginActivity extends AppCompatActivity {
         Storage.listTipovi();
         Storage.ListCLanova();
         Storage.listAutora();
-        Storage.GetAllKnjige();
+//        Storage.GetAllKnjige();
 
         SetLoginCredentials();
     }

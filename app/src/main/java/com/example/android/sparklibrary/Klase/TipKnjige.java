@@ -1,10 +1,13 @@
 package com.example.android.sparklibrary.Klase;
 
+import java.io.Serializable;
+
 /**
  * Created by adissertovic on 15/06/17.
  */
 
-public class TipKnjige {
+public class TipKnjige implements Serializable {
+
     int tip_id;
     String tip_naziv;
 

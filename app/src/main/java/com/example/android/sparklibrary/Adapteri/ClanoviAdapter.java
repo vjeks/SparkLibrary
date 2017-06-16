@@ -1,6 +1,7 @@
 package com.example.android.sparklibrary.Adapteri;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,8 +9,8 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.android.sparklibrary.Klase.Clanovi;
-import com.example.android.sparklibrary.Klase.Knjiga;
 import com.example.android.sparklibrary.R;
+import com.google.gson.Gson;
 
 import java.util.List;
 
@@ -19,6 +20,8 @@ import java.util.List;
 
 public class ClanoviAdapter extends BaseAdapter {
 
+
+    private static final String TAG = "ClanoviAdapter";
 
     private Context c;
     private LayoutInflater layoutInflater;
@@ -53,9 +56,8 @@ public class ClanoviAdapter extends BaseAdapter {
         //        TextView user_id;
 //        TextView first_name;
 //        TextView last_name;
-        TextView id;
         TextView ime;
-        TextView prezime;
+        TextView broj;
     }
 
 
@@ -66,18 +68,16 @@ public class ClanoviAdapter extends BaseAdapter {
 
         if (convertView == null) {
             dl = new drzacListe();
-            convertView = layoutInflater.inflate(R.layout.knjge_list_item, parent, false);
-            dl.id = (TextView) convertView.findViewById(R.id.naziv_knjige);
-            dl.ime = (TextView) convertView.findViewById(R.id.autor);
-            dl.prezime = (TextView) convertView.findViewById(R.id.tipKnjige);
+            convertView = layoutInflater.inflate(R.layout.clanovi_list_item, parent, false);
+            dl.ime = (TextView) convertView.findViewById(R.id.ime_clana);
+            dl.broj = (TextView) convertView.findViewById(R.id.broj_clana);
             convertView.setTag(dl);
         } else {
             dl = (drzacListe) convertView.getTag();
         }
-
-        dl.id.setText("Naziv Knjige : "+listClanovi.get(pozicija).getID());
-        dl.ime.setText("AUTOR: " + listClanovi.get(pozicija).getIme());
-        dl.prezime.setText("TIP: " + listClanovi.get(pozicija).getPrezime());
+        Log.d(TAG, "getView:  CLAN:    " + new Gson().toJson(listClanovi.get(pozicija)));
+        dl.ime.setText(listClanovi.get(pozicija).getIme() + " " + listClanovi.get(pozicija).getPrezime());
+        dl.broj.setText("CL.br. : " + listClanovi.get(pozicija).getClan_broj());
         return convertView;
     }
 }

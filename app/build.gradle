@@ -32,4 +32,8 @@ dependencies {
     //Externi library PICASSO sluzi za slike
     compile 'com.squareup.picasso:picasso:2.5.2'
 
+    //GSON
+    compile 'com.google.code.gson:gson:2.8.0'
+
+
 }

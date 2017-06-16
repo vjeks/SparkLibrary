@@ -3,11 +3,26 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="22dp"
+        android:text="Pregled clanova"/>
+
     <ListView
         android:id="@+id/clanoviList"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
     </ListView>
+    
+    
+    <TextView
+        android:id="@+id/no_members"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="NO MEMBERS IN STORAGE"
+        android:visibility="gone"
+        android:textSize="44dp"/>
 
 </LinearLayout>
