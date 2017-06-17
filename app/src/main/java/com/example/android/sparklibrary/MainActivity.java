@@ -18,8 +18,10 @@ import android.widget.TextView;
 import com.example.android.sparklibrary.Fragmenti.ClanoviFragment;
 import com.example.android.sparklibrary.Fragmenti.KnjigaUnos;
 import com.example.android.sparklibrary.Fragmenti.KnjigeFragment;
+import com.example.android.sparklibrary.Fragmenti.PostavkeFragment;
 import com.example.android.sparklibrary.Fragmenti.PosudjeneKnjigeFragment;
 import com.example.android.sparklibrary.Storage.AppHelper;
+import com.example.android.sparklibrary.Storage.PostavkeStorage;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -29,9 +31,21 @@ public class MainActivity extends AppCompatActivity
 
     FragmentManager fm = getSupportFragmentManager();
 
+    PostavkeStorage postavkeStorage = new PostavkeStorage();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+//        if(AppHelper.getInstance().getPostavkeStorage()!= null){
+//            if(AppHelper.getInstance().getPostavkeStorage().getTema_broj()){
+//                setTheme(android.R.style.Theme_Holo_Light);
+//            }else{
+//                setTheme(android.R.style.Theme_Black);
+//
+//            }
+//        }
+
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
@@ -120,7 +134,7 @@ public class MainActivity extends AppCompatActivity
             fm.beginTransaction().replace(R.id.content_view,new PosudjeneKnjigeFragment()).commit();
 
         } else if (id == R.id.nav_settings) {
-
+            fm.beginTransaction().replace(R.id.content_view,new PostavkeFragment()).commit();
         } else if (id == R.id.nav_logoff) {
             finish();
         }

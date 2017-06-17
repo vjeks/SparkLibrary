@@ -6,9 +6,6 @@ import android.content.SharedPreferences;
 import com.example.android.sparklibrary.Responsovi.LoginResponse;
 import com.google.gson.Gson;
 
-/**
- * Created by adissertovic on 16/06/17.
- */
 
 public class AppHelper {
 
@@ -26,7 +23,7 @@ public class AppHelper {
     private static final String KNJIGE_STORAGE = "knjige_storage";
     private static final String CLANOVI_STORAGE = "clanovi_storage";
     private static final String POSUDJENE_KNJIGE_STORAGE = "posudjene_knjige_storage";
-    //private static final String KNJIGE_STORAGE = "knjige_storage";
+    private static final String POSTAVKE_STORAGE= "postavke_storage";
 
 
     public static String getDefaultImage() {
@@ -91,6 +88,19 @@ public class AppHelper {
     public PosudjeneKnjigeStorage getPosudjeneKnjigeStorage() {
         SharedPreferences prefs = this.context.getSharedPreferences(SHARED_PREFERENCES, Context.MODE_PRIVATE);
         return gson.fromJson(prefs.getString(POSUDJENE_KNJIGE_STORAGE, null), PosudjeneKnjigeStorage.class);
+    }
+
+
+    public void setPostavkeStorage(PostavkeStorage response) {
+        SharedPreferences.Editor editor = this.context.getSharedPreferences(SHARED_PREFERENCES, Context.MODE_PRIVATE)
+                .edit();
+        editor.putString(POSTAVKE_STORAGE, gson.toJson(response));
+        editor.commit();
+    }
+
+    public PostavkeStorage getPostavkeStorage() {
+        SharedPreferences prefs = this.context.getSharedPreferences(SHARED_PREFERENCES, Context.MODE_PRIVATE);
+        return gson.fromJson(prefs.getString(POSTAVKE_STORAGE, null), PostavkeStorage.class);
     }
 
 

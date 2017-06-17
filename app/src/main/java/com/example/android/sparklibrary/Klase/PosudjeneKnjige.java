@@ -1,10 +1,12 @@
 package com.example.android.sparklibrary.Klase;
 
+import java.io.Serializable;
+
 /**
  * Created by adissertovic on 16/06/17.
  */
 
-public class PosudjeneKnjige {
+public class PosudjeneKnjige implements Serializable {
 
     private int clan_id;
     private int knjiga_id;

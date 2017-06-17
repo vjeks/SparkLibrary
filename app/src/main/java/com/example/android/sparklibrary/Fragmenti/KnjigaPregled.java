@@ -65,7 +65,9 @@ public class KnjigaPregled extends Fragment {
         broj_stranica_id = (TextView) rootView.findViewById(R.id.broj_stranica_id);
         klasifikacijski_broj_id = (TextView) rootView.findViewById(R.id.klasifikacijski_broj_id);
 
-listaClanova = new ArrayList<>();
+
+
+        listaClanova = new ArrayList<>();
         listaClanova = Storage.ListCLanova();
 
         clan_broj_identifikacije = (EditText) rootView.findViewById(R.id.clan_broj_identifikacije);
@@ -126,11 +128,9 @@ listaClanova = new ArrayList<>();
         return rootView;
     }
 
-boolean imaclan= false;
 
 
-
-
+    boolean imaclan= false;
     private void showDIalogBox() {
 
 
