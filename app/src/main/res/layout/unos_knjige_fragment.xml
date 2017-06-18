@@ -29,7 +29,7 @@
             android:id="@+id/naslov_knjige_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="NAslov knjige"
+            android:hint="Naslov knjige"
             android:textSize="20dp"
             android:padding="5dp" />
 
@@ -37,7 +37,7 @@
             android:id="@+id/autor_id_imeprezime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Ime Prezime"
+            android:hint="Ime  i prezime autora"
             android:textSize="20dp"
             android:padding="5dp" />
 
@@ -54,6 +54,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Godina izdanja"
+            android:inputType="number"
+            android:maxEms="4"
             android:textSize="20dp"
             android:padding="5dp" />
 
@@ -62,6 +64,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Broj stranica"
+            android:inputType="number"
             android:textSize="20dp"
             android:padding="5dp" />
 
@@ -69,7 +72,6 @@
             android:id="@+id/klasifikacijski_broj_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Klasifikacijski broj"
             android:textSize="20dp"
             android:padding="5dp" />
     </LinearLayout>
@@ -78,6 +80,7 @@
     <LinearLayout
         android:layout_below="@+id/scroll_view"
         android:padding="10dp"
+        android:layout_marginTop="20dp"
         android:id="@+id/drugi_dole"
         android:layout_width="match_parent"
         android:orientation="horizontal"

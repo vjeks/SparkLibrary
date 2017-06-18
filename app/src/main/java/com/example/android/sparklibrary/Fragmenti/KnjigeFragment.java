@@ -82,6 +82,7 @@ public class KnjigeFragment extends Fragment {
                 if (klasifikacije_spinner.getSelectedItemPosition() == 0) {
                     SetKnjige();
                 } else {
+                    Log.d(TAG, "onItemSelected: " + position);
                     presentKnjige(position);
                 }
                 Toast.makeText(getActivity(), "pozicija je" + position, Toast.LENGTH_SHORT).show();
@@ -141,13 +142,20 @@ public class KnjigeFragment extends Fragment {
 
     private void presentKnjige(int position) {
 
-        spinnerKnjigeFilter.clear();
-        for (int i = 0; i < Storage.listTipoviStringovi().size(); i++) {
-            if (knjigaListe.get(i).getTip() == position) {
-                Log.d("ima knjiga", "*************************");
-                spinnerKnjigeFilter.add(knjigaListe.get(i));
+        spinnerKnjigeFilter = new ArrayList<>();
+        if (AppHelper.getInstance().getKnjigeStorage() != null) {
+            if (AppHelper.getInstance().getKnjigeStorage().getListaKnjiga() != null) {
+                if (AppHelper.getInstance().getKnjigeStorage().getListaKnjiga().size() > 0) {
+                    for (int i = 0; i < AppHelper.getInstance().getKnjigeStorage().getListaKnjiga().size(); i++) {
+                        if (knjigaListe.get(i).getTip() == position) {
+                            Log.d("ima knjiga", "*************************");
+                            spinnerKnjigeFilter.add(knjigaListe.get(i));
+                        }
+                    }
+                }
             }
         }
+
         knjigeListAdapter = new KnjigeListAdapter(getActivity(), spinnerKnjigeFilter);
         knjigeListAdapter.notifyDataSetChanged();
         knjigeList.setAdapter(knjigeListAdapter);

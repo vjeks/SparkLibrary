@@ -36,6 +36,7 @@ public class KnjigaUnos extends Fragment {
 
 
     Knjiga knjigaUnos;
+    List<String>TipoviList;
 
     // root view
     View rootView;
@@ -53,15 +54,20 @@ public class KnjigaUnos extends Fragment {
         godina_izdanja_id = (EditText) rootView.findViewById(R.id.godina_izdanja_id);
         broj_stranica_id = (EditText) rootView.findViewById(R.id.broj_stranica_id);
         klasifikacijski_broj_id = (Spinner) rootView.findViewById(R.id.klasifikacijski_broj_id);
-
+        TipoviList = new ArrayList<>();
+        TipoviList.add("Odaberi Tip");
         spremi = (Button) rootView.findViewById(R.id.spremi);
         nazad = (Button) rootView.findViewById(R.id.nazad);
 
 
         knjigaUnos = new Knjiga();
+        for (int i = 0; i < Storage.listTipoviStringovi().size(); i++) {
+            TipoviList.add(Storage.listTipoviStringovi().get(i));
+        }
+
 
         ArrayAdapter<String> spinnerCategories = new ArrayAdapter<String>(getActivity(), R.layout.route_preview_sp_item_cat_lang_search_text1,
-                Storage.listTipoviStringovi());
+                TipoviList);
         spinnerCategories.setDropDownViewResource(R.layout.spinner_dropdown_item);
 
         klasifikacijski_broj_id.setAdapter(spinnerCategories);
@@ -82,7 +88,7 @@ public class KnjigaUnos extends Fragment {
 
 
 
-        SetValuesOnFOrm();
+//        SetValuesOnFOrm();
         return rootView;
 
 
@@ -100,7 +106,7 @@ public class KnjigaUnos extends Fragment {
         knjigaUnos.setNaklada(naklada_id.getText().toString());
         knjigaUnos.setGodina_izdanja(Integer.parseInt(godina_izdanja_id.getText().toString()));
         knjigaUnos.setBroj_stranica(Integer.parseInt(broj_stranica_id.getText().toString()));
-        int setSelectedItem = klasifikacijski_broj_id.getSelectedItemPosition()+1;
+        int setSelectedItem = klasifikacijski_broj_id.getSelectedItemPosition();
         knjigaUnos.setTip(setSelectedItem);
         Log.d(TAG, "unesiKnjigu: "+" klasifikacijski:broj "+ setSelectedItem);
         knjigaUnos.setDostupnost(true);
