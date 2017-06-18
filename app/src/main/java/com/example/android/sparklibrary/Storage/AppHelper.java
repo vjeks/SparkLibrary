@@ -24,6 +24,7 @@ public class AppHelper {
     private static final String CLANOVI_STORAGE = "clanovi_storage";
     private static final String POSUDJENE_KNJIGE_STORAGE = "posudjene_knjige_storage";
     private static final String POSTAVKE_STORAGE= "postavke_storage";
+    private static final String TIPOVI_STORAGE= "tipovi_storage";
 
 
     public static String getDefaultImage() {
@@ -104,6 +105,17 @@ public class AppHelper {
     }
 
 
+    public void setTipoviStorage(TipoviStorage response) {
+        SharedPreferences.Editor editor = this.context.getSharedPreferences(SHARED_PREFERENCES, Context.MODE_PRIVATE)
+                .edit();
+        editor.putString(TIPOVI_STORAGE, gson.toJson(response));
+        editor.commit();
+    }
+
+    public TipoviStorage getTipoviStorage() {
+        SharedPreferences prefs = this.context.getSharedPreferences(SHARED_PREFERENCES, Context.MODE_PRIVATE);
+        return gson.fromJson(prefs.getString(TIPOVI_STORAGE, null), TipoviStorage.class);
+    }
 
 
 

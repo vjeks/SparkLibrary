@@ -88,7 +88,7 @@ public class ClanoviAdapter extends BaseAdapter {
                         if(AppHelper.getInstance().getPosudjeneKnjigeStorage().getPosudjeneKnjigeStorageList().get(i).getClan_id() ==
                                 listClanovi.get(pozicija).getID()){
 //                                dl.cb.setImageResource(true);
-                                dl.cb.setImageResource(R.color.green);
+                                dl.cb.setImageResource(R.color.Yellow);
                         }
                     }
                 }

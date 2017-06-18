@@ -79,9 +79,9 @@ public class KnjigeListAdapter extends BaseAdapter {
 
         //Picasso.with(c).load()
         if(listUwp.get(pozicija).isDostupnost()){
-            dl.ikonaIznajmljena.setImageResource(R.color.colorPrimary);
+            dl.ikonaIznajmljena.setImageResource(R.color.Chartreuse);
         }else{
-            dl.ikonaIznajmljena.setImageResource(R.color.colorAccent);
+            dl.ikonaIznajmljena.setImageResource(R.color.red);
         }
         return convertView;
     }

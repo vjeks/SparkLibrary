@@ -2,6 +2,7 @@ package com.example.android.sparklibrary.Fragmenti;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -108,8 +109,10 @@ public class PosudjenaKnjigaFragment extends Fragment {
 
                 Log.d(TAG, "onClick: " + " KNJIGE STORAGE" + new Gson().toJson(listKnjiga));
 
+                Knjiga knjigaZaIspis = new Knjiga();
                 for (int i = 0; i < listKnjiga.size(); i++) {
                     if (listKnjiga.get(i).getID() == knjiga.getKnjiga_id()) {
+                        knjigaZaIspis = listKnjiga.get(i);
                         Log.d(TAG, "onClick: " + "ima pšosudjena knjiga");
                         listKnjiga.get(i).setDostupnost(true);
                     }else{
@@ -125,6 +128,9 @@ public class PosudjenaKnjigaFragment extends Fragment {
                 //knjigePosudjene.remove(knjiga);
 
                 AppHelper.getInstance().setKnjigeStorage(knjigeStorage);
+
+                Snackbar.make(rootView,  "Vracena je knjiga: "+ knjigaZaIspis.getNaziv_knjige() +" ", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_view,new KnjigeFragment()).commit();
 
             }

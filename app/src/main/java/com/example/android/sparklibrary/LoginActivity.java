@@ -27,8 +27,8 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin = (Button) findViewById(R.id.btn_login);
         btnRegister = (Button) findViewById(R.id.btn_register);
         Storage.listTipovi();
-        Storage.ListCLanova();
-        Storage.listAutora();
+//        Storage.ListCLanova();
+//        Storage.listAutora();
 //        Storage.GetAllKnjige();
 
         SetLoginCredentials();

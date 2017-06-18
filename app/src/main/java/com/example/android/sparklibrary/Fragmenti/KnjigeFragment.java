@@ -15,14 +15,12 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.android.sparklibrary.Adapteri.KnjigeListAdapter;
 import com.example.android.sparklibrary.Klase.Knjiga;
 import com.example.android.sparklibrary.R;
 import com.example.android.sparklibrary.Storage.AppHelper;
 import com.example.android.sparklibrary.Storage.KnjigeStorage;
-import com.example.android.sparklibrary.Storage.Storage;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -65,14 +63,29 @@ public class KnjigeFragment extends Fragment {
         List<String> tipovi = new ArrayList<>();
         tipovi.add("Svi tipovi");
 
-
-        for (int i = 0; i < Storage.listTipoviStringovi().size(); i++) {
-            tipovi.add(Storage.listTipoviStringovi().get(i));
+        if (AppHelper.getInstance().getTipoviStorage() != null) {
+            if (AppHelper.getInstance().getTipoviStorage().getTipoviLista() != null) {
+                if (AppHelper.getInstance().getTipoviStorage().getTipoviLista().size() > 0) {
+                    for (int i = 0; i < AppHelper.getInstance().getTipoviStorage().getTipoviLista().size(); i++) {
+                        tipovi.add(AppHelper.getInstance().getTipoviStorage().getTipoviLista().get(i).getTip_naziv());
+                    }
+                }
+            }
         }
+
+
         ArrayAdapter<String> spinnerCategories = new ArrayAdapter<String>(getActivity(), R.layout.route_preview_sp_item_cat_lang_search_text1,
                 tipovi);
-        spinnerCategories.setDropDownViewResource(R.layout.spinner_dropdown_item);
 
+//        for (int i = 0; i < Storage.listTipoviStringovi().size(); i++) {
+//            tipovi.add(Storage.listTipoviStringovi().get(i));
+//        }
+//        ArrayAdapter<String> spinnerCategories = new ArrayAdapter<String>(getActivity(), R.layout.route_preview_sp_item_cat_lang_search_text1,
+//                tipovi);
+//        spinnerCategories.setDropDownViewResource(R.layout.spinner_dropdown_item);
+//
+//
+//
         klasifikacije_spinner.setAdapter(spinnerCategories);
 
         klasifikacije_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -85,7 +98,7 @@ public class KnjigeFragment extends Fragment {
                     Log.d(TAG, "onItemSelected: " + position);
                     presentKnjige(position);
                 }
-                Toast.makeText(getActivity(), "pozicija je" + position, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getActivity(), "pozicija je" + position, Toast.LENGTH_SHORT).show();
                 //presentKnjige(position+1);
             }
 

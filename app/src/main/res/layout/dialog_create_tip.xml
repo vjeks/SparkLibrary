@@ -2,39 +2,35 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-
     <TextView
-        android:id="@+id/text_na_dialogu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Posudjivanje knjige"
-        android:textSize="22dp"
-        android:gravity="center_horizontal"
-
-        />
+        android:text="Unesite novi tip knjiga"
+        android:textSize="22dp"/>
+    <EditText
+        android:id="@+id/tip_unos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="unesite tip ovdje"
+        android:textColorHint="@color/red"/>
 
     <LinearLayout
-        android:id="@+id/donji"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        
-        <Button
-            android:id="@+id/ne"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="NE"/>
+        android:layout_height="wrap_content">
 
         <Button
-            android:id="@+id/da"
+            android:id="@+id/otkazi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="DA"/>
+            android:text="otkazi"
+            android:layout_weight="1"/>
 
+        <Button
+            android:id="@+id/spremi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="spremi"
+            android:layout_weight="1"/>
     </LinearLayout>
-
-
 
 </LinearLayout>

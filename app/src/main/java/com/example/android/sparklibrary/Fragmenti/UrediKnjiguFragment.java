@@ -78,8 +78,23 @@ public class UrediKnjiguFragment extends Fragment {
             }
         });
 
+        List<String> tipovi = new ArrayList<>();
+        tipovi.add("Svi tipovi");
+
+        if (AppHelper.getInstance().getTipoviStorage() != null) {
+            if (AppHelper.getInstance().getTipoviStorage().getTipoviLista() != null) {
+                if (AppHelper.getInstance().getTipoviStorage().getTipoviLista().size() > 0) {
+                    for (int i = 0; i < AppHelper.getInstance().getTipoviStorage().getTipoviLista().size(); i++) {
+                        tipovi.add(AppHelper.getInstance().getTipoviStorage().getTipoviLista().get(i).getTip_naziv());
+                    }
+                }
+            }
+        }
+
+
         ArrayAdapter<String> spinnerCategories = new ArrayAdapter<String>(getActivity(), R.layout.route_preview_sp_item_cat_lang_search_text1,
-                Storage.listTipoviStringovi());
+                tipovi);
+
         spinnerCategories.setDropDownViewResource(R.layout.spinner_dropdown_item);
 
         klasifikacijski_broj_id.setAdapter(spinnerCategories);

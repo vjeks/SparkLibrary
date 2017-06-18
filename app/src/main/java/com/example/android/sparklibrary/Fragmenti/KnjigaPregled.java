@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.android.sparklibrary.Klase.Clanovi;
 import com.example.android.sparklibrary.Klase.Knjiga;
@@ -116,13 +115,13 @@ public class KnjigaPregled extends Fragment {
                             if(imaclan){
                                 showDIalogBox();
                             }else{
-                                Toast.makeText(getActivity(), "Clan nije pronadjen", Toast.LENGTH_SHORT).show();
+//                                Toast.makeText(getActivity(), "Clan nije pronadjen", Toast.LENGTH_SHORT).show();
                             }
                             }
                         }
 
                 }else{
-                    Toast.makeText(getActivity(), "niste unijeli clanski broj!!!!!!!! ili nema clanova u tabeliii", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getActivity(), "niste unijeli clanski broj!!!!!!!! ili nema clanova u tabeliii", Toast.LENGTH_SHORT).show();
 
                 }
             }
@@ -178,10 +177,12 @@ public class KnjigaPregled extends Fragment {
         Knjiga knjiga1 = new Gson().fromJson(zauzetaKnjiga,Knjiga.class);
         Log.d(TAG, "Knjiga1 info: " + new Gson().toJson(knjiga1));
 
+        text.setText("Knjiga se posudjije clanu: \n" + clanZaProvjeru.getIme() + " " + clanZaProvjeru.getPrezime());
+
         da.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "Knjiga je uspjesno posudjena: " + clanZaProvjeru.getIme() + " " + clanZaProvjeru.getPrezime(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getActivity(), "Knjiga je uspjesno posudjena: " + clanZaProvjeru.getIme() + " " + clanZaProvjeru.getPrezime(), Toast.LENGTH_SHORT).show();
                 //TODO dodati clana u storage i zapamtiti;
 
                 PosudjeneKnjige posudjenaKnjigaUnos = new PosudjeneKnjige();

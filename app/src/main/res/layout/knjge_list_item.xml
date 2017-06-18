@@ -25,8 +25,8 @@
         android:layout_toRightOf="@+id/autor"
         android:id="@+id/tipKnjige"
         android:layout_centerVertical="true"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@color/colorAccent"/>
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:src="@color/Red"/>
 
 </RelativeLayout>

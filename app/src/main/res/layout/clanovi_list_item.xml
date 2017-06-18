@@ -26,8 +26,8 @@
 
     <ImageView
         android:id="@+id/posudjena_knjiga_slika"
-        android:layout_width="50dp"
-        android:layout_height="50dp" />
+        android:layout_width="10dp"
+        android:layout_height="10dp" />
     <!--<CheckBox-->
         <!--android:layout_toRightOf="@+id/autor"-->
         <!--android:id="@+id/posudjena_knjiga_cb"-->

@@ -68,12 +68,26 @@
             android:textSize="20dp"
             android:padding="5dp" />
 
-        <Spinner
-            android:id="@+id/klasifikacijski_broj_id"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20dp"
-            android:padding="5dp" />
+            android:orientation="horizontal">
+            <Spinner
+                android:id="@+id/klasifikacijski_broj_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:layout_weight="1"
+                android:padding="5dp" />
+            <Button
+                android:id="@+id/add_tip"
+                android:layout_weight="3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="..."/>
+
+        </LinearLayout>
+
     </LinearLayout>
 
 </ScrollView>
