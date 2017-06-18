@@ -13,10 +13,6 @@ import com.example.android.sparklibrary.Storage.AppHelper;
 
 import java.util.List;
 
-/**
- * Created by adissertovic on 17/06/17.
- */
-
 public class PosudjeneKnjigeAdapter extends BaseAdapter {
 
 

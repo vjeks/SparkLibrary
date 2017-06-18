@@ -21,9 +21,6 @@ import java.util.List;
 
 import static android.view.View.GONE;
 
-/**
- * Created by Home on 14.6.2017..
- */
 
 public class ClanoviFragment extends Fragment {
 

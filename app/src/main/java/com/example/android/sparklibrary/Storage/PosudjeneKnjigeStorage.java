@@ -4,10 +4,6 @@ import com.example.android.sparklibrary.Klase.PosudjeneKnjige;
 
 import java.util.List;
 
-/**
- * Created by adissertovic on 16/06/17.
- */
-
 public class PosudjeneKnjigeStorage {
 
     List<PosudjeneKnjige> posudjeneKnjigeStorageList;

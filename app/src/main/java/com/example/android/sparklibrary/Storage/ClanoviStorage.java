@@ -4,9 +4,6 @@ import com.example.android.sparklibrary.Klase.Clanovi;
 
 import java.util.List;
 
-/**
- * Created by adissertovic on 16/06/17.
- */
 
 public class ClanoviStorage {
 

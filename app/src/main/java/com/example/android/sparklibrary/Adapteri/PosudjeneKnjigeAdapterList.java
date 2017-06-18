@@ -14,10 +14,6 @@ import com.example.android.sparklibrary.Storage.AppHelper;
 
 import java.util.List;
 
-/**
- * Created by adissertovic on 17/06/17.
- */
-
 public class PosudjeneKnjigeAdapterList extends BaseAdapter {
 
     public static final String TAG = "PosudjeneKnjige";

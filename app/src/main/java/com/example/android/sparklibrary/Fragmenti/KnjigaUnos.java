@@ -21,9 +21,6 @@ import com.example.android.sparklibrary.Storage.Storage;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by adissertovic on 16/06/17.
- */
 
 public class KnjigaUnos extends Fragment {
 

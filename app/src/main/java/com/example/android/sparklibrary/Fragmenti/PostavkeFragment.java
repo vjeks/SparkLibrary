@@ -17,9 +17,6 @@ import com.example.android.sparklibrary.R;
 import com.example.android.sparklibrary.Storage.AppHelper;
 import com.example.android.sparklibrary.Storage.PostavkeStorage;
 
-/**
- * Created by adissertovic on 17/06/17.
- */
 
 public class PostavkeFragment extends Fragment {
 
@@ -67,7 +64,6 @@ public class PostavkeFragment extends Fragment {
                 }
             }
         });
-
 
         holo_dark_cb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override

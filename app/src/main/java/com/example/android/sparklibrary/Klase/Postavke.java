@@ -1,9 +1,5 @@
 package com.example.android.sparklibrary.Klase;
 
-/**
- * Created by adissertovic on 17/06/17.
- */
-
 public class Postavke {
 
     int tema_broj;

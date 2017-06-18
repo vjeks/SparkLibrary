@@ -9,10 +9,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by adissertovic on 15/06/17.
- */
-
 public class Storage implements Serializable{
 
     public static List<Knjiga> listaKnjiga;

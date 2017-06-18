@@ -20,9 +20,7 @@ import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by adissertovic on 16/06/17.
- */
+
 
 public class PregledClana extends Fragment {
 

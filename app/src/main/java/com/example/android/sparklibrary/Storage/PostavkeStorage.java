@@ -1,9 +1,5 @@
 package com.example.android.sparklibrary.Storage;
 
-/**
- * Created by adissertovic on 17/06/17.
- */
-
 public class PostavkeStorage {
 
     boolean tema_broj;

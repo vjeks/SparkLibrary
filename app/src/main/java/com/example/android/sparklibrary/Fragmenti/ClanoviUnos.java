@@ -18,9 +18,6 @@ import com.example.android.sparklibrary.Storage.ClanoviStorage;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by adissertovic on 16/06/17.
- */
 
 public class ClanoviUnos extends Fragment {
 

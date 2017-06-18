@@ -30,9 +30,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-/**
- * Created by adissertovic on 15/06/17.
- */
 
 public class KnjigaPregled extends Fragment {
 

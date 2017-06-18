@@ -2,9 +2,6 @@ package com.example.android.sparklibrary.Klase;
 
 import java.io.Serializable;
 
-/**
- * Created by Home on 15.6.2017..
- */
 
 public class Autor implements Serializable {
 

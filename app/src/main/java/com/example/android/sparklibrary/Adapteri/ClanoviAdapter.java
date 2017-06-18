@@ -16,9 +16,6 @@ import com.google.gson.Gson;
 
 import java.util.List;
 
-/**
- * Created by Home on 14.6.2017..
- */
 
 public class ClanoviAdapter extends BaseAdapter {
 
