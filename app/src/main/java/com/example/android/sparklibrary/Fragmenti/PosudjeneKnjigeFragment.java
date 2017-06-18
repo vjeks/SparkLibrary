@@ -2,6 +2,7 @@ package com.example.android.sparklibrary.Fragmenti;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -33,6 +34,8 @@ public class PosudjeneKnjigeFragment extends Fragment {
 
     private static final String TAG = "PosudjeneKnjige";
 
+    FloatingActionButton fab;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -43,12 +46,14 @@ public class PosudjeneKnjigeFragment extends Fragment {
         posudjene_knjige_lv = (ListView) rootView.findViewById(R.id.posudjene_knjige_lv);
 
 
+        fab = (FloatingActionButton) getActivity().findViewById(R.id.fab);
+        fab.setVisibility(View.GONE);
+
+
         posudjeneKnjigeLista = new ArrayList<>();
 
 
         SetValuesOnForm();
-
-
 
 
         return rootView;
@@ -59,19 +64,18 @@ public class PosudjeneKnjigeFragment extends Fragment {
 
         Log.d(TAG, "SetValuesOnForm: " + new Gson().toJson(AppHelper.getInstance().getPosudjeneKnjigeStorage().getPosudjeneKnjigeStorageList()));
 
-        if(AppHelper.getInstance().getPosudjeneKnjigeStorage()!= null){
-            if(AppHelper.getInstance().getPosudjeneKnjigeStorage().getPosudjeneKnjigeStorageList()!= null){
-                if (AppHelper.getInstance().getPosudjeneKnjigeStorage().getPosudjeneKnjigeStorageList().size()>0) {
+        if (AppHelper.getInstance().getPosudjeneKnjigeStorage() != null) {
+            if (AppHelper.getInstance().getPosudjeneKnjigeStorage().getPosudjeneKnjigeStorageList() != null) {
+                if (AppHelper.getInstance().getPosudjeneKnjigeStorage().getPosudjeneKnjigeStorageList().size() > 0) {
 
                     posudjeneKnjigeLista = AppHelper.getInstance().getPosudjeneKnjigeStorage().getPosudjeneKnjigeStorageList();
 //                    Log.d(TAG, "SetValuesOnForm: " + new Gson().toJson(AppHelper.getInstance().getPosudjeneKnjigeStorage().getPosudjeneKnjigeStorageList()));
 
-                    posudjeneKnjigeAdapterList = new PosudjeneKnjigeAdapterList(getActivity(),posudjeneKnjigeLista);
+                    posudjeneKnjigeAdapterList = new PosudjeneKnjigeAdapterList(getActivity(), posudjeneKnjigeLista);
                     posudjene_knjige_lv.setAdapter(posudjeneKnjigeAdapterList);
                 }
             }
         }
-
 
 
         posudjene_knjige_lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -88,8 +92,7 @@ public class PosudjeneKnjigeFragment extends Fragment {
                 PosudjenaKnjigaFragment knjigaFragment = new PosudjenaKnjigaFragment();
                 knjigaFragment.setArguments(bundle);
 
-                getActivity().getSupportFragmentManager().beginTransaction().addToBackStack(rootView.getClass().getName()).add(R.id.content_view,knjigaFragment,TAG).commit();
-
+                getActivity().getSupportFragmentManager().beginTransaction().addToBackStack(rootView.getClass().getName()).add(R.id.content_view, knjigaFragment, TAG).commit();
 
 
             }

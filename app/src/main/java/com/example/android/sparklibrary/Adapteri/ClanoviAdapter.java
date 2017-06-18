@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -84,7 +83,7 @@ public class ClanoviAdapter extends BaseAdapter {
         }
         Log.d(TAG, "getView:  CLAN:    " + new Gson().toJson(listClanovi.get(pozicija)));
         dl.ime.setText(listClanovi.get(pozicija).getIme() + " " + listClanovi.get(pozicija).getPrezime());
-        dl.broj.setText("CL.br. : " + listClanovi.get(pozicija).getClan_broj());
+        dl.broj.setText("CL.br. : " + listClanovi.get(pozicija).getID());
         if (AppHelper.getInstance().getPosudjeneKnjigeStorage() != null) {
             if (AppHelper.getInstance().getPosudjeneKnjigeStorage().getPosudjeneKnjigeStorageList() != null) {
                 if (AppHelper.getInstance().getPosudjeneKnjigeStorage().getPosudjeneKnjigeStorageList().size() > 0) {

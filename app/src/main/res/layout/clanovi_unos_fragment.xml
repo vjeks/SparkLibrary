@@ -42,7 +42,7 @@
                 android:id="@+id/clan_broj"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="ClanBroj"
+                android:hint="Clan br. ce biti generisan"
                 android:inputType="number"
                 android:textSize="20dp"
                 android:padding="5dp" />
@@ -61,7 +61,8 @@
                 android:layout_height="wrap_content"
                 android:hint="clan_telefon"
                 android:textSize="20dp"
-                android:padding="5dp" />
+                android:padding="5dp"
+                android:inputType="number"/>
 
 
         </LinearLayout>

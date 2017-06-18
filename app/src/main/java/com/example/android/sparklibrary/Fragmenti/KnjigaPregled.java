@@ -3,6 +3,7 @@ package com.example.android.sparklibrary.Fragmenti;
 import android.app.AlertDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -101,22 +102,30 @@ public class KnjigaPregled extends Fragment {
             public void onClick(View v) {
                 if(clan_broj_identifikacije!= null && !clan_broj_identifikacije.getText().toString().isEmpty()){
 
-                    for (int i = 0; i < AppHelper.getInstance().getClanoviStorage().getListaCLanova().size(); i++) {
-                        if(AppHelper.getInstance().getClanoviStorage().getListaCLanova().get(i).getID()==Integer.parseInt(clan_broj_identifikacije.getText().toString())){
-                            clanZaProvjeru = new Clanovi();
-                            clanZaProvjeru = AppHelper.getInstance().getClanoviStorage().getListaCLanova().get(i);
-                            imaclan = true;
-                            break;
+
+                    if(AppHelper.getInstance().getClanoviStorage()!= null){
+                        if(AppHelper.getInstance().getClanoviStorage().getListaCLanova()!=null){
+                            if(AppHelper.getInstance().getClanoviStorage().getListaCLanova().size()>0){
+                            }
+                            for (int i = 0; i < AppHelper.getInstance().getClanoviStorage().getListaCLanova().size(); i++) {
+                                if(AppHelper.getInstance().getClanoviStorage().getListaCLanova().get(i).getID()==Integer.parseInt(clan_broj_identifikacije.getText().toString())){
+                                    clanZaProvjeru = new Clanovi();
+                                    clanZaProvjeru = AppHelper.getInstance().getClanoviStorage().getListaCLanova().get(i);
+                                    imaclan = true;
+                                    break;
+                                }
+
+                            }
+                            if(imaclan){
+                                showDIalogBox();
+                            }else{
+                                Toast.makeText(getActivity(), "Clan nije pronadjen", Toast.LENGTH_SHORT).show();
+                            }
+                            }
                         }
 
-                    }
-                    if(imaclan){
-                        showDIalogBox();
-                    }else{
-                        Toast.makeText(getActivity(), "Clan nije pronadjen", Toast.LENGTH_SHORT).show();
-                    }
                 }else{
-                    Toast.makeText(getActivity(), "niste unijeli clanski broj!!!!!!!!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "niste unijeli clanski broj!!!!!!!! ili nema clanova u tabeliii", Toast.LENGTH_SHORT).show();
 
                 }
             }
@@ -236,6 +245,8 @@ public class KnjigaPregled extends Fragment {
                 }
                 knjigeStorage.setListaKnjiga(knjige);
                 AppHelper.getInstance().setKnjigeStorage(knjigeStorage);
+                Snackbar.make(rootView,  "Knjiga: "+ knjiga.getNaziv_knjige() +" je uspjesno posudjena: " + clanZaProvjeru.getIme() + " " + clanZaProvjeru.getPrezime(), Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
 
 
                 alertDialog.dismiss();

@@ -1,5 +1,6 @@
 package com.example.android.sparklibrary;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -9,6 +10,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -26,6 +28,7 @@ import com.example.android.sparklibrary.Storage.PostavkeStorage;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private static final String TAG = "MainActivity";
     ImageView userSlika;
     TextView ime_knjizare;
 
@@ -37,14 +40,7 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
 
 
-//        if(AppHelper.getInstance().getPostavkeStorage()!= null){
-//            if(AppHelper.getInstance().getPostavkeStorage().getTema_broj()){
-//                setTheme(android.R.style.Theme_Holo_Light);
-//            }else{
-//                setTheme(android.R.style.Theme_Black);
-//
-//            }
-//        }
+
 
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -82,6 +78,16 @@ public class MainActivity extends AppCompatActivity
         ime_knjizare = (TextView)findViewById(R.id.ime_knjizare);
         //setValuesOnForm();
 
+
+        if (AppHelper.getInstance().getPostavkeStorage() != null) {
+            if (AppHelper.getInstance().getPostavkeStorage().getTema_broj()) {
+                Log.d(TAG, "onCreate: " + AppHelper.getInstance().getPostavkeStorage().getTema_broj());
+                setTheme(android.R.style.Theme_Holo_Light);
+            } else {
+                setTheme(android.R.style.Theme_Black);
+                Log.d(TAG, "onCreate: " + AppHelper.getInstance().getPostavkeStorage().getTema_broj());
+            }
+        }
         fm.beginTransaction().replace(R.id.content_view,new  KnjigeFragment()).addToBackStack(new KnjigeFragment().getClass().getName()).commit();
 
     }
@@ -95,6 +101,7 @@ public class MainActivity extends AppCompatActivity
             drawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
+            fm.beginTransaction().replace(R.id.content_view,new  KnjigeFragment()).commit();
         }
     }
 
@@ -136,7 +143,8 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_settings) {
             fm.beginTransaction().replace(R.id.content_view,new PostavkeFragment()).commit();
         } else if (id == R.id.nav_logoff) {
-            finish();
+            Intent i = new Intent(this, LoginActivity.class);
+            startActivity(i);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

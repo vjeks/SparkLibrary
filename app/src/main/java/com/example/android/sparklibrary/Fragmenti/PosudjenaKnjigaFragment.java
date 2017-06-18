@@ -109,21 +109,25 @@ public class PosudjenaKnjigaFragment extends Fragment {
 
                 List<Knjiga> listKnjiga = AppHelper.getInstance().getKnjigeStorage().getListaKnjiga();
 
+                Log.d(TAG, "onClick: " + " KNJIGE STORAGE" + new Gson().toJson(listKnjiga));
+
                 for (int i = 0; i < listKnjiga.size(); i++) {
-                    if (listKnjiga.contains(knjiga2)) {
+                    if (listKnjiga.get(i).getID() == knjiga.getKnjiga_id()) {
                         Log.d(TAG, "onClick: " + "ima pšosudjena knjiga");
                         listKnjiga.get(i).setDostupnost(true);
+                    }else{
+                        Log.d(TAG, "onClick: " + "NEMA KNJIGE");
                     }
                 }
 
                 KnjigeStorage knjigeStorage = new KnjigeStorage();
                 knjigeStorage.setListaKnjiga(listKnjiga);
                 Log.d(TAG, "onClick: " + "POSLIJE BRISANJA       " + new Gson().toJson(knjigePosudjene));
+                Log.d(TAG, "onClick: " + "Knjiga iy posudjenig       " + new Gson().toJson(listKnjiga));
 ////
                 //knjigePosudjene.remove(knjiga);
 
-                posudjeneKnjigeStorage.setPosudjeneKnjigeStorageList(knjigePosudjene);
-                AppHelper.getInstance().setPosudjeneKnjigeStorage(posudjeneKnjigeStorage);
+                AppHelper.getInstance().setKnjigeStorage(knjigeStorage);
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_view,new KnjigeFragment()).commit();
 
             }

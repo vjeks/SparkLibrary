@@ -108,12 +108,15 @@ public class KnjigaUnos extends Fragment {
         Log.d(TAG, "unesiKnjigu: "+" klasifikacijski:broj "+ setSelectedItem);
         knjigaUnos.setDostupnost(true);
 
+        //Log.d(TAG, "unesiKnjigu: " +"Lista knjiga "+ new Gson().toJson(AppHelper.getInstance().getKnjigeStorage().getListaKnjiga() ));
+
         if(AppHelper.getInstance().getKnjigeStorage() != null){
             if(AppHelper.getInstance().getKnjigeStorage().getListaKnjiga()!= null){
                 if(AppHelper.getInstance().getKnjigeStorage().getListaKnjiga().size()>0){
                     knjigeStorage = AppHelper.getInstance().getKnjigeStorage();
                     knjigeList = knjigeStorage.getListaKnjiga();
                     knjigaUnos.setID(AppHelper.getInstance().getKnjigeStorage().getListaKnjiga().size()+1);
+
                     knjigeList.add(knjigaUnos);
                     knjigeStorage.setListaKnjiga(knjigeList);
                     AppHelper.getInstance().setKnjigeStorage(knjigeStorage);

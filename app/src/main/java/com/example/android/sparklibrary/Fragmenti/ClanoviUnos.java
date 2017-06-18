@@ -46,7 +46,7 @@ public class ClanoviUnos extends Fragment {
         clan_broj = (EditText)rootView.findViewById(R.id.clan_broj);
         clan_adresa = (EditText)rootView.findViewById(R.id.clan_adresa);
         clan_tel_broj = (EditText)rootView.findViewById(R.id.clan_tel_broj);
-
+        clan_broj.setEnabled(false);
         nazad= (Button) rootView.findViewById(R.id.nazad);
         spremi= (Button) rootView.findViewById(R.id.spremi);
 
@@ -68,20 +68,20 @@ public class ClanoviUnos extends Fragment {
 
 
 
-        SetValuesOnForm();
+        //popuniPolja();
 
 
 
         return rootView;
     }
 
-    private void SetValuesOnForm() {
+    private void popuniPolja() {
 
         clan_ime.setText("Vjekoslav");// = (EditText)rootView.findViewById(R.id.clan_ime);
         clan_prezime.setText("Vjekoslav");
         clan_broj.setText("Vjekoslav");
         clan_adresa.setText("Vjekoslav");
-        clan_tel_broj.setText("Vjekoslav");
+        clan_tel_broj.setText("");
 
 
     }
@@ -96,7 +96,6 @@ public class ClanoviUnos extends Fragment {
         clanUnos.setPrezime(clan_prezime.getText().toString());
         clanUnos.setClan_broj(clan_broj.getText().toString());
         clanUnos.setAdresa(clan_adresa.getText().toString());
-        clanUnos.setTel_broj(clan_tel_broj.getText().toString());
 
         if(AppHelper.getInstance().getClanoviStorage() != null){
             if(AppHelper.getInstance().getClanoviStorage().getListaCLanova()!=null){
@@ -104,6 +103,7 @@ public class ClanoviUnos extends Fragment {
                     clanoviStorage = AppHelper.getInstance().getClanoviStorage();
                     clanoviList = clanoviStorage.getListaCLanova();
                     clanUnos.setID(clanoviList.size()+1);
+                    clanUnos.setTel_broj(String.valueOf(clanUnos.getID()));
                     clanoviList.add(clanUnos);
                     clanoviStorage.setListaCLanova(clanoviList);
                     AppHelper.getInstance().setClanoviStorage(clanoviStorage);
@@ -111,11 +111,14 @@ public class ClanoviUnos extends Fragment {
                 }else{
                     clanUnos.setID(1);
                     clanoviList.add(clanUnos);
+                    clanUnos.setTel_broj(String.valueOf(clanUnos.getID()));
+
                     clanoviStorage.setListaCLanova(clanoviList);
                     AppHelper.getInstance().setClanoviStorage(clanoviStorage);
                 }
             }else{
                 clanUnos.setID(1);
+                clanUnos.setTel_broj(String.valueOf(clanUnos.getID()));
                 clanoviList.add(clanUnos);
                 clanoviStorage.setListaCLanova(clanoviList);
                 AppHelper.getInstance().setClanoviStorage(clanoviStorage);
@@ -123,6 +126,7 @@ public class ClanoviUnos extends Fragment {
 
         }else {
             clanUnos.setID(1);
+            clanUnos.setTel_broj(String.valueOf(clanUnos.getID()));
             clanoviList.add(clanUnos);
             clanoviStorage.setListaCLanova(clanoviList);
             AppHelper.getInstance().setClanoviStorage(clanoviStorage);
