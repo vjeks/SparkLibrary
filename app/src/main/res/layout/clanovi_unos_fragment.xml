@@ -59,7 +59,7 @@
                 android:id="@+id/clan_tel_broj"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="clan_telefon"
+                android:hint="Telefon"
                 android:textSize="20dp"
                 android:padding="5dp"
                 android:inputType="number"/>
